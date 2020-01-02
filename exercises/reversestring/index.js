@@ -9,9 +9,10 @@
 function reverse(str) {
   // Array.prototype.reverse()
   // <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse>
-  const arr = str.split("");
-  arr.reverse();
-  return arr.join("");
+  return str
+    .split('')
+    .reverse()
+    .join('');
 }
 
 module.exports = reverse;
