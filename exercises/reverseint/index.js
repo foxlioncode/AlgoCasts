@@ -17,38 +17,66 @@
 // - parseInt()
 //     - <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt>
 
-// ========================================================================================================================
-// ## MY SOLUTION (20mins)
 function reverseInt(n) {
-  // Convert int to str
-  let revInt;
-
-  // Handle Negative
-  if (n < 0) {
-    revInt = String(n * -1);
-    revInt =
-      Number(
-        revInt
-          .split("")
-          .reverse()
-          .join("")
-      ) * -1;
-    //   revInt = revInt * -1;
-    return revInt;
-    // Handle Zero
-  } else if (n == 0) {
-    return 0;
-    // Handle Positive Number
-  } else {
-    revInt = String(n);
-    revInt = Number(
-      revInt
+  // Positive Number
+  if (n > 0) {
+    return parseInt(
+      n
+        .toString()
         .split("")
         .reverse()
         .join("")
     );
-    return revInt;
+    // Zero
+  } else if (n === 0) {
+    return 0;
+    // Negative Number
+  } else {
+    n = n * -1;
+    return (
+      parseInt(
+        n
+          .toString()
+          .split("")
+          .reverse()
+          .join("")
+      ) * -1
+    );
   }
 }
+
+// ========================================================================================================================
+// ## MY SOLUTION (20mins)
+// function reverseInt(n) {
+//   // Convert int to str
+//   let revInt;
+
+//   // Handle Negative
+//   if (n < 0) {
+//     revInt = String(n * -1);
+//     revInt =
+//       Number(
+//         revInt
+//           .split("")
+//           .reverse()
+//           .join("")
+//       ) * -1;
+//     //   revInt = revInt * -1;
+//     return revInt;
+//     // Handle Zero
+//   } else if (n == 0) {
+//     return 0;
+//     // Handle Positive Number
+//   } else {
+//     revInt = String(n);
+//     revInt = Number(
+//       revInt
+//         .split("")
+//         .reverse()
+//         .join("")
+//     );
+//     return revInt;
+//   }
+// }
 
 module.exports = reverseInt;
