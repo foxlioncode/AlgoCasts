@@ -12,21 +12,22 @@
 //     - Use array helper .every().
 //     - Compare first character with last character and see if they are equal.
 
+
 function palindrome(str) {
     // - Array.prototype.every()
     //     - <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every>
     //     - Checks whether every element in an array passes a test implemented by a function and returns a boolean.
 
     // Convert str to arr
-    let arr = str.split('');
-
-    return arr.every((char, i) => {
-        return char === arr[arr.length - i - 1];
-    })
+    return str.split('').every(checkIfCharacterSame);
 
 }
 
-// var checkIfCharacterSame = (character, i) => {
+var checkIfCharacterSame = (char, i, arr) => {
+    return char === arr[arr.length - i - 1];
+}
+
+// function checkIfCharacterSame (character, i, arr) {
 //     return character === arr[arr.length - i - 1];
 // }
 
