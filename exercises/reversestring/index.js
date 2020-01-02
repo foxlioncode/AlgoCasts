@@ -6,22 +6,13 @@
 //   reverse('hello') === 'olleh'
 //   reverse('Greetings!') === '!sgniteerG'
 
-// SOLUTION #2
+// SOLUTION #3
 function reverse(str) {
 
-    // Declare an empty string.
-    let reversed = '';
+    // Reduce helper takes all values in array and condenses it down into a single string value.
+    // <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce>
+    return str.split('').reduce((reversed, character) => character + reversed, '')
 
-    // Avoid classic for loop syntax because it is easy to introduce mistakes with this long form.
-    // for ... of
-    // <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of>
-    // May not work for nth element iteraction.
-    
-    for (let character of str) {
-        reversed = character + reversed;
-    }
-
-    return reversed;
 }
 
 module.exports = reverse;
