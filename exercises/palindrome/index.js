@@ -8,22 +8,37 @@
 //   palindrome("abcdefg") === false
 
 // ========================================================================================================================
-// - SOLVED (20mins)
-//     - Did not remember how to reverse a string.
+// - SOLUTION #1
+//     - Most straightforward/direct solution.
+
 function palindrome(str) {
+    // Reverse str
+    const reversed = str.split('').reverse().join('');
 
-    let reversed = '';
-
-    for (let character of str) {
-        reversed = character + reversed;
-    }
-
-    if (str === reversed) {
-        return true
-    } else {
-        return false
-    }
-
+    // Direct comparison
+    return str === reversed;
 }
 
+palindrome('hello')
+
+// ========================================================================================================================
+// - SOLVED (20mins)
+//     - Did not remember how to reverse a string.
+// function palindrome(str) {
+
+//     let reversed = '';
+
+//     for (let character of str) {
+//         reversed = character + reversed;
+//     }
+
+//     if (str === reversed) {
+//         return true
+//     } else {
+//         return false
+//     }
+
+// }
+
+// ========================================================================================================================
 module.exports = palindrome;
