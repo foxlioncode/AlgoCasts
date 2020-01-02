@@ -8,18 +8,41 @@
 //   palindrome("abcdefg") === false
 
 // ========================================================================================================================
+// - SOLUTION #2
+//     - Use array helper .every().
+//     - Compare first character with last character and see if they are equal.
+
+function palindrome(str) {
+    // - Array.prototype.every()
+    //     - <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every>
+    //     - Checks whether every element in an array passes a test implemented by a function and returns a boolean.
+
+    // Convert str to arr
+    let arr = str.split('');
+
+    return arr.every((char, i) => {
+        return char === arr[arr.length - i - 1];
+    })
+
+}
+
+// var checkIfCharacterSame = (character, i) => {
+//     return character === arr[arr.length - i - 1];
+// }
+
+// ========================================================================================================================
 // - SOLUTION #1
 //     - Most straightforward/direct solution.
 
-function palindrome(str) {
-    // Reverse str
-    const reversed = str.split('').reverse().join('');
+// function palindrome(str) {
+//     // Reverse str
+//     const reversed = str.split('').reverse().join('');
 
-    // Direct comparison
-    return str === reversed;
-}
+//     // Direct comparison
+//     return str === reversed;
+// }
 
-palindrome('hello')
+// palindrome('hello')
 
 // ========================================================================================================================
 // - SOLVED (20mins)
