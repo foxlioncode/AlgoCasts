@@ -17,36 +17,56 @@
 // - parseInt()
 //     - <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt>
 
+// ========================================================================================================================
+// ## SOLUTION #1 - Math.sign()
+// The Math.sign() function returns either a positive or negative +/- 1.
+
 function reverseInt(n) {
-  // Positive Number
-  if (n > 0) {
-    return parseInt(
+  return (
+    parseInt(
       n
         .toString()
         .split("")
         .reverse()
         .join("")
-    );
-    // Zero
-  } else if (n === 0) {
-    return 0;
-    // Negative Number
-  } else {
-    n = n * -1;
-    return (
-      parseInt(
-        n
-          .toString()
-          .split("")
-          .reverse()
-          .join("")
-      ) * -1
-    );
-  }
+    ) * Math.sign(n)
+  );
 }
 
 // ========================================================================================================================
+// ## MY SOLUTION - HINTS
+
+// function reverseInt(n) {
+//   // Positive Number
+//   if (n > 0) {
+//     return parseInt(
+//       n
+//         .toString()
+//         .split("")
+//         .reverse()
+//         .join("")
+//     );
+//     // Zero
+//   } else if (n === 0) {
+//     return 0;
+//     // Negative Number
+//   } else {
+//     n = n * -1;
+//     return (
+//       parseInt(
+//         n
+//           .toString()
+//           .split("")
+//           .reverse()
+//           .join("")
+//       ) * -1
+//     );
+//   }
+// }
+
+// ========================================================================================================================
 // ## MY SOLUTION (20mins)
+
 // function reverseInt(n) {
 //   // Convert int to str
 //   let revInt;
