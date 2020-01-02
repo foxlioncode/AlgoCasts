@@ -9,7 +9,16 @@
 //   reverseInt(-90) === -9
 
 // ========================================================================================================================
-// MY SOLUTION (20mins)
+// ## HINTS
+// - Number.prototype.toString()
+//     - <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toString>
+// - Math.sign()
+//     - <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/sign>
+// - parseInt()
+//     - <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt>
+
+// ========================================================================================================================
+// ## MY SOLUTION (20mins)
 function reverseInt(n) {
   // Convert int to str
   let revInt;
