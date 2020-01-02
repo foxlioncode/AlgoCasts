@@ -12,7 +12,6 @@
 //     - Use array helper .every().
 //     - Compare first character with last character and see if they are equal.
 
-
 function palindrome(str) {
     // - Array.prototype.every()
     //     - <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every>
