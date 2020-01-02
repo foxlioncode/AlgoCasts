@@ -9,10 +9,14 @@
 // SOLUTION #3
 function reverse(str) {
 
-    // Reduce helper takes all values in array and condenses it down into a single string value.
-    // <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce>
+    debugger;
+    
+    // ## TODO - [ ] Reduce helper takes all values in array and condenses it down into a single string value.
+    // ## TODO     - [ ] <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce>
     return str.split('').reduce((reversed, character) => character + reversed, '')
 
 }
+
+reverse('hello');
 
 module.exports = reverse;
