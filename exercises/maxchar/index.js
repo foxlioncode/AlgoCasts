@@ -17,7 +17,10 @@
 
 // This function creates the correct data structure for analysis, a character map.
 function maxChar (str) {
-    let mappedObject = {};
+  
+  let mappedObject = {};
+  let max = 0;
+  let maxChar = '';
 
   for (let char of str) {
 
