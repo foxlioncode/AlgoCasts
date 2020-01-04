@@ -15,40 +15,74 @@
 // ========================================================================================================================
 // SOLUTION #1 - .reduce()
 
-
-
-// ........................................................................................................................
-// SOLUTION #1 - My solution.
 function maxChar(str) {
-  var mappedObject = {};
+  let mappedObject = {};
 
   for (let char of str) {
-    if (!mappedObject[char]) {
-      mappedObject[char] = 1;
-    } else {
+    if (mappedObject[char]) {
       mappedObject[char]++;
+    } else {
+      mappedObject[char] = 1;
     }
   }
 
-  // ........................................................................................................................
-  // Find which char has the highest count.
-  // Math.max()
-  // <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max>
-  // Object.values()
-  // <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/values>
-  // ... Spread
-  // <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax>
-  // Array.prototype.indexOf()
-  // <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf>
+  let mappedObjectValuesArr = [];
 
-  let mappedObjectValuesArr = Object.values(mappedObject);
+  mappedObjectValuesArr = Object.values(mappedObject);
 
-  let indexMaxMappedObject = mappedObjectValuesArr.indexOf(
-    Math.max(...mappedObjectValuesArr)
-  );
+  let maxValue;
+  let maxValueIndex;
+  let maxKeyIndex;
 
-  return Object.keys(mappedObject)[indexMaxMappedObject];
+  let reducer = (accumulator, currentValue) => {
+    // <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max#Getting_the_maximum_element_of_an_array>
+    return Math.max(accumulator, currentValue);
+  };
+
+  // return mappedObjectValuesArr.indexOf(mappedObjectValuesArr.reduce(reducer));
+  maxValue = mappedObjectValuesArr.reduce(reducer);
+  maxValueIndex = mappedObjectValuesArr.indexOf(maxValue);
+
+  return Object.keys(mappedObject)[maxValueIndex];
 }
+
+console.log(maxChar("helllloo"));
+
+// Use reduce() to find max value.
+// <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce>
+
+// ........................................................................................................................
+// SOLUTION #1 - My solution.
+// function maxChar(str) {
+//   var mappedObject = {};
+
+//   for (let char of str) {
+//     if (!mappedObject[char]) {
+//       mappedObject[char] = 1;
+//     } else {
+//       mappedObject[char]++;
+//     }
+//   }
+
+//   // ........................................................................................................................
+//   // Find which char has the highest count.
+//   // Math.max()
+//   // <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max>
+//   // Object.values()
+//   // <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/values>
+//   // ... Spread
+//   // <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax>
+//   // Array.prototype.indexOf()
+//   // <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf>
+
+//   let mappedObjectValuesArrArr = Object.values(mappedObject);
+
+//   let indexMaxMappedObject = mappedObjectValuesArrArr.indexOf(
+//     Math.max(...mappedObjectValuesArrArr)
+//   );
+
+//   return Object.keys(mappedObject)[indexMaxMappedObject];
+// }
 
 // console.log(maxChar("bbbzzz"));
 
@@ -85,7 +119,10 @@ function maxChar(str) {
 // console.log(charsObject);
 
 // ........................................................................................................................
+// constructor
 // <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor>
+// Object.entries()
+// <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries>
 
 // class StrToObj {
 //   constructor(str) {
