@@ -14,7 +14,11 @@
 
 // ========================================================================================================================
 // SOLUTION #1
-function maxChar () {};
+function maxChar (str) {
+
+  
+
+};
 
 // ========================================================================================================================
 // ## HINTS
@@ -35,16 +39,16 @@ function maxChar () {};
 
 // - String to Map Object
 // - Loop through each character and add it as a property to object, then set value to 1.
-const string = 'hello';
-const charsObject = {};
+// const string = 'hello';
+// const charsObject = {};
 
-for (let char of string) {
-  if (!charsObject[char]) {
-    charsObject[char] = 1;
-  } else {
-    charsObject[char]++;
-  }
-}
+// for (let char of string) {
+//   if (!charsObject[char]) {
+//     charsObject[char] = 1;
+//   } else {
+//     charsObject[char]++;
+//   }
+// }
 
 // console.log(charsObject);
 
