@@ -14,11 +14,38 @@
 
 // ========================================================================================================================
 // SOLUTION #1
-function maxChar (str) {
+function maxChar(str) {
+  var mappedObject = {};
 
-  
+  for (let char of str) {
+    if (!mappedObject[char]) {
+      mappedObject[char] = 1;
+    } else {
+      mappedObject[char]++;
+    }
+  }
 
-};
+  // ........................................................................................................................
+  // Find which char has the highest count.
+  // Math.max()
+  // <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max>
+  // Object.values()
+  // <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/values>
+  // ... Spread
+  // <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax>
+  // Array.prototype.indexOf()
+  // <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf>
+
+  let mappedObjectValuesArr = Object.values(mappedObject);
+
+  let indexMaxMappedObject = mappedObjectValuesArr.indexOf(
+    Math.max(...mappedObjectValuesArr)
+  );
+
+  return Object.keys(mappedObject)[indexMaxMappedObject];
+}
+
+console.log(maxChar("bbbzzz"));
 
 // ========================================================================================================================
 // ## HINTS
