@@ -13,7 +13,12 @@
 // - Does it ask you to Count or verify the number of characters in a string?
 
 // ========================================================================================================================
-// SOLUTION #1
+// SOLUTION #1 - .reduce()
+
+
+
+// ........................................................................................................................
+// SOLUTION #1 - My solution.
 function maxChar(str) {
   var mappedObject = {};
 
@@ -45,7 +50,7 @@ function maxChar(str) {
   return Object.keys(mappedObject)[indexMaxMappedObject];
 }
 
-console.log(maxChar("bbbzzz"));
+// console.log(maxChar("bbbzzz"));
 
 // ========================================================================================================================
 // ## HINTS
