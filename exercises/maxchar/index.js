@@ -13,40 +13,69 @@
 // - Does it ask you to Count or verify the number of characters in a string?
 
 // ========================================================================================================================
-// SOLUTION #1 - .reduce()
+// SOLUTION #1 - Ternary operator (Conditional operator)
 
-function maxChar(str) {
-  let mappedObject = {};
+// This function creates the correct data structure for analysis, a character map.
+function maxChar (str) {
+    let mappedObject = {};
 
   for (let char of str) {
-    if (mappedObject[char]) {
-      mappedObject[char]++;
-    } else {
-      mappedObject[char] = 1;
-    }
+
+    // if ... else
+    // if (mappedObject[char]) {
+    //   mappedObject[char]++;
+    // } else {
+    //   mappedObject[char] = 1;
+    // }
+
+    // Ternary Operator
+    // mappedObject[char] = (mappedObject[char])?  mappedObject[char]++ : mappedObject[char] = 1;
+
+    // or || Operator
+    mappedObject[char] = mappedObject[char] + 1 || 1;
+
   }
-
-  let mappedObjectValuesArr = [];
-
-  mappedObjectValuesArr = Object.values(mappedObject);
-
-  let maxValue;
-  let maxValueIndex;
-  let maxKeyIndex;
-
-  let reducer = (accumulator, currentValue) => {
-    // <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max#Getting_the_maximum_element_of_an_array>
-    return Math.max(accumulator, currentValue);
-  };
-
-  // return mappedObjectValuesArr.indexOf(mappedObjectValuesArr.reduce(reducer));
-  maxValue = mappedObjectValuesArr.reduce(reducer);
-  maxValueIndex = mappedObjectValuesArr.indexOf(maxValue);
-
-  return Object.keys(mappedObject)[maxValueIndex];
+  return mappedObject;
 }
 
-console.log(maxChar("helllloo"));
+console.log(maxChar('hellmaaaaaaaaaaao'));
+
+
+// ========================================================================================================================
+// SOLUTION #1 - .reduce()
+
+// function maxChar(str) {
+//   let mappedObject = {};
+
+//   for (let char of str) {
+//     if (mappedObject[char]) {
+//       mappedObject[char]++;
+//     } else {
+//       mappedObject[char] = 1;
+//     }
+//   }
+
+//   let mappedObjectValuesArr = [];
+
+//   mappedObjectValuesArr = Object.values(mappedObject);
+
+//   let maxValue;
+//   let maxValueIndex;
+//   let maxKeyIndex;
+
+//   let reducer = (accumulator, currentValue) => {
+//     // <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max#Getting_the_maximum_element_of_an_array>
+//     return Math.max(accumulator, currentValue);
+//   };
+
+//   // return mappedObjectValuesArr.indexOf(mappedObjectValuesArr.reduce(reducer));
+//   maxValue = mappedObjectValuesArr.reduce(reducer);
+//   maxValueIndex = mappedObjectValuesArr.indexOf(maxValue);
+
+//   return Object.keys(mappedObject)[maxValueIndex];
+// }
+
+// console.log(maxChar("helllloo"));
 
 // Use reduce() to find max value.
 // <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce>
