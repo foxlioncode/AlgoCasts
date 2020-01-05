@@ -13,17 +13,15 @@
 // - Does it ask you to Count or verify the number of characters in a string?
 
 // ========================================================================================================================
-// SOLUTION #1 - Ternary operator (Conditional operator)
+// SOLUTION #1 - Ternary operator (Conditional operator); For ... In Loop
 
 // This function creates the correct data structure for analysis, a character map.
-function maxChar (str) {
-  
+function maxChar(str) {
   let mappedObject = {};
   let max = 0;
-  let maxChar = '';
+  let maxChar = "";
 
   for (let char of str) {
-
     // if ... else
     // if (mappedObject[char]) {
     //   mappedObject[char]++;
@@ -36,13 +34,17 @@ function maxChar (str) {
 
     // or || Operator
     mappedObject[char] = mappedObject[char] + 1 || 1;
-
   }
-  return mappedObject;
+
+  for (let char in mappedObject) {
+    if (mappedObject[char] > max) {
+      max = mappedObject[char];
+      maxChar = char;
+    }
+  }
+
+  return maxChar;
 }
-
-console.log(maxChar('hellmaaaaaaaaaaao'));
-
 
 // ========================================================================================================================
 // SOLUTION #1 - .reduce()
