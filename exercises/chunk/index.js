@@ -8,24 +8,45 @@
 // chunk([1, 2, 3, 4, 5], 4) --> [[ 1, 2, 3, 4], [5]]
 // chunk([1, 2, 3, 4, 5], 10) --> [[ 1, 2, 3, 4, 5]]
 
+// ========================================================================================================================
+// SOLUTION #1
+
 function chunk(array, size) {
-  let chunkArr = [];
-  let outputArr = [];
+  let chunked = [];
 
   for (let element of array) {
-    if (chunkArr.length != size) {
-      chunkArr.push(element);
+    let last = chunked[chunked.length - 1];
+
+    // If there is no last element in chunked, or if the last element is equal to the size then ...
+    if (!last || last.length == size) {
+      // In this step you are creating the array and pushing the element into the array at the same time.
+      chunked.push([element]);
     } else {
-      outputArr.push(chunkArr);
-      chunkArr = [];
-      chunkArr.push(element);
+      last.push(element);
     }
   }
 
-  outputArr.push(chunkArr);
-  return outputArr;
+  return chunked;
 }
 
-// console.log(chunk([1,2,3,4,5,6], 2));
+// ========================================================================================================================
+// MY SOLUTION
+// function chunk(array, size) {
+//   let chunkArr = [];
+//   let outputArr = [];
+
+//   for (let element of array) {
+//     if (chunkArr.length != size) {
+//       chunkArr.push(element);
+//     } else {
+//       outputArr.push(chunkArr);
+//       chunkArr = [];
+//       chunkArr.push(element);
+//     }
+//   }
+
+//   outputArr.push(chunkArr);
+//   return outputArr;
+// }
 
 module.exports = chunk;
