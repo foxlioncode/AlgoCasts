@@ -9,35 +9,63 @@
 //   anagrams('Hi there', 'Bye there') --> False
 
 // ========================================================================================================================
-// SOLUTION #1
+// SOLUTION #2
+// Array.prototype.sort()
+// - <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort>
+// String.prototype.split()
+// - <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split>
+// Array.prototype.join()
+// - <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join>
 
 function anagrams(stringA, stringB) {
-  const aCharMap = buildCharMap(stringA);
-  const bCharMap = buildCharMap(stringB);
-
-  if (Object.keys(aCharMap).length !== Object.keys(bCharMap).length) {
-    return false;
+  if (cleanString(stringA) === cleanString(stringB)) {
+    return true;
   }
-
-  for (let char in aCharMap) {
-    if (aCharMap[char] !== bCharMap[char]) {
-      return false;
-    }
-  }
-  
-  return true;
+  return false;
 }
 
-// Helper Function - Build a character map for each string.
-function buildCharMap(str) {
-  const charMap = {};
-
-  for (let char of str.replace(/[^\w]/g, "").toLowerCase()) {
-    charMap[char] = charMap[char] + 1 || 1;
-  }
-
-  return charMap;
+function cleanString(str) {
+  console.log(str);
+  return str
+    .replace(/[^\w]/g, "")
+    .toLowerCase()
+    .split("")
+    .sort()
+    .join("");
 }
+
+// ========================================================================================================================
+// SOLUTION #1
+// - for ... of loop iterates through arrays.
+// - for ... in loop iterates through objects.
+
+// function anagrams(stringA, stringB) {
+//   const aCharMap = buildCharMap(stringA);
+//   const bCharMap = buildCharMap(stringB);
+
+//   if (Object.keys(aCharMap).length !== Object.keys(bCharMap).length) {
+//     return false;
+//   }
+
+//   for (let char in aCharMap) {
+//     if (aCharMap[char] !== bCharMap[char]) {
+//       return false;
+//     }
+//   }
+
+//   return true;
+// }
+
+// // Helper Function - Build a character map for each string.
+// function buildCharMap(str) {
+//   const charMap = {};
+
+//   for (let char of str.replace(/[^\w]/g, "").toLowerCase()) {
+//     charMap[char] = charMap[char] + 1 || 1;
+//   }
+
+//   return charMap;
+// }
 
 // ========================================================================================================================
 // // MY SOLUTION
@@ -48,6 +76,8 @@ function buildCharMap(str) {
 // // - <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace>
 // // - String.prototype.toLowerCase()
 // // - <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase>
+// // - <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes>
+// // - <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes>
 
 // function anagrams(stringA, stringB) {
 //   let mapObjectA = mapObjectArrFunction(stringA, stringB)[0];
