@@ -14,6 +14,57 @@
 //       ' ### '
 //       '#####'
 
-function pyramid(n) {}
+// ========================================================================================================================
+// MY SOLUTION
+// Hint
+// - Math.floor()
 
+function pyramid(n) {
+  let countSpaces = n;
+  let countPounds = 1;
+  for (let i = 0; i < n; i++) {
+    let pyramidStr = "";
+
+    let spacesAddStr;
+    let poundsAddStr;
+    let finalSpacesAddStr;
+
+    spacesAddStr = printSpaces(pyramidStr, countSpaces);
+    poundsAddStr = printPounds(spacesAddStr, countPounds);
+    finalSpacesAddStr = printSpaces(poundsAddStr, countSpaces);
+
+    console.log(finalSpacesAddStr);
+    countSpaces--;
+    countPounds += 2;
+  }
+}
+
+function printPounds(str, n) {
+  let numberPounds = n;
+  let poundsString = str;
+
+  while (numberPounds > 0) {
+    poundsString += "#";
+    numberPounds--;
+  }
+
+  return poundsString;
+}
+
+function printSpaces(str, n) {
+  let spacesStr = str;
+  let loopCount = n;
+
+  loopCount = (loopCount * 2 - 2) / 2;
+  while (loopCount > 0) {
+    spacesStr += " ";
+    loopCount--;
+  }
+
+  return spacesStr;
+}
+
+pyramid(9);
+
+// ========================================================================================================================
 module.exports = pyramid;
