@@ -23,16 +23,10 @@ function pyramid(n) {
   let countSpaces = n;
   let countPounds = 1;
   for (let i = 0; i < n; i++) {
-    let pyramidStr = "";
-
-    let spacesAddStr;
-    let poundsAddStr;
-    let finalSpacesAddStr;
-
-    spacesAddStr = printSpaces(pyramidStr, countSpaces);
-    poundsAddStr = printPounds(spacesAddStr, countPounds);
-    finalSpacesAddStr = printSpaces(poundsAddStr, countSpaces);
-
+    // let spacesAddStr = printSpaces('', countSpaces);
+    // let poundsAddStr = printPounds(spacesAddStr, countPounds);
+    // let finalSpacesAddStr = printSpaces(poundsAddStr, countSpaces);
+    let finalSpacesAddStr = printSpaces(printPounds(printSpaces('', countSpaces), countPounds), countSpaces);
     console.log(finalSpacesAddStr);
     countSpaces--;
     countPounds += 2;
@@ -40,31 +34,23 @@ function pyramid(n) {
 }
 
 function printPounds(str, n) {
-  let numberPounds = n;
-  let poundsString = str;
-
-  while (numberPounds > 0) {
-    poundsString += "#";
-    numberPounds--;
+  while (n > 0) {
+    str += "#";
+    n--;
   }
-
-  return poundsString;
+  return str;
 }
 
 function printSpaces(str, n) {
-  let spacesStr = str;
-  let loopCount = n;
-
-  loopCount = (loopCount * 2 - 2) / 2;
-  while (loopCount > 0) {
-    spacesStr += " ";
-    loopCount--;
+  n = (n * 2 - 2) / 2;
+  while (n > 0) {
+    str += ' ';
+    n--;
   }
-
-  return spacesStr;
+  return str;
 }
 
-pyramid(9);
+// pyramid(10);
 
 // ========================================================================================================================
 module.exports = pyramid;
