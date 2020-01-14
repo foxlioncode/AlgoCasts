@@ -18,7 +18,8 @@
 // MY SOLUTION
 // Hint
 // - Math.floor()
-
+// - Method Chaining
+// - Callback Pattern
 function pyramid(n) {
   let countSpaces = n;
   let countPounds = 1;
