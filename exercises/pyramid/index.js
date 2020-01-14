@@ -15,27 +15,56 @@
 //       '#####'
 
 // ========================================================================================================================
+// SOLUTION #2 - Recursive
+
+function pyramid(n, row = 0, level = '') {
+  // - Set up base case correctly.
+  if (row === n) {
+    return;
+  }
+  // - Detect when at end of a column.
+  if (level.length === 2 * n - 1) {
+    console.log(level);
+    return pyramid(n, row + 1);
+  }
+
+  // - Decide whether to add space or pound to the string.
+  // - Midpoint calculation.
+  const midpoint = Math.floor((2 * n - 1) / 2);
+  let add;
+
+  // - Determine when to add a # and when to add a space.
+  if (midpoint - row <= level.length && midpoint + row >= level.length) {
+    add = '#';
+  } else {
+    add = ' ';
+  }
+
+  pyramid(n, row, level + add);
+}
+
+// ========================================================================================================================
 // SOLUTION #1 - Iterative
 
-function pyramid(n) {
-  const midpoint = Math.floor((2 * n - 1) / 2);
+// function pyramid(n) {
+//   const midpoint = Math.floor((2 * n - 1) / 2);
 
-  for (let row = 0; row < n; row++) {
-    let level = "";
+//   for (let row = 0; row < n; row++) {
+//     let level = "";
 
-    // Think about how 'n' is related to the pattern.
-    for (let column = 0; column < 2 * n - 1; column++) {
-      // Calculate center index.
-      if (midpoint - row <= column && midpoint + row >= column) {
-        level += "#";
-      } else {
-        level += " ";
-      }
-    }
+//     // Think about how 'n' is related to the pattern.
+//     for (let column = 0; column < 2 * n - 1; column++) {
+//       // Calculate center index.
+//       if (midpoint - row <= column && midpoint + row >= column) {
+//         level += "#";
+//       } else {
+//         level += " ";
+//       }
+//     }
 
-    console.log(level);
-  }
-}
+//     console.log(level);
+//   }
+// }
 
 // ========================================================================================================================
 // MY SOLUTION
