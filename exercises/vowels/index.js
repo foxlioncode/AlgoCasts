@@ -7,6 +7,34 @@
 //   vowels('Why do you ask?') --> 4
 //   vowels('Why?') --> 0
 
-function vowels(str) {}
+// ========================================================================================================================
+// MY SOLUTION
+// ------------------------------------------------------------------------------------------------------------------------
+// - Iterative
 
+// ------------------------------------------------------------------------------------------------------------------------
+// - Regular Expression
+function vowels(str) {
+  let vowelsRegEx = /[aeiou]/gi;
+  let regexArr = str.match(vowelsRegEx);
+  let mapObject = {};
+  let sum = 0;
+
+  for (let element of regexArr) {
+    if (!mapObject[element]) {
+      mapObject[element] = 1;
+    } else if (mapObject[element]) {
+      mapObject[element]++;
+    }
+  }
+
+  for (let element of Object.values(mapObject)) {
+    sum += element;
+  }
+
+  return sum;
+}
+
+console.log(vowels("hiiiiee"));;
+// ========================================================================================================================
 module.exports = vowels;
