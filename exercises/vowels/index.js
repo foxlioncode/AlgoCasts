@@ -12,29 +12,43 @@
 // ------------------------------------------------------------------------------------------------------------------------
 // - Iterative
 
-// ------------------------------------------------------------------------------------------------------------------------
-// - Regular Expression
 function vowels(str) {
-  let vowelsRegEx = /[aeiou]/gi;
-  let regexArr = str.match(vowelsRegEx);
-  let mapObject = {};
-  let sum = 0;
+  let count = 0;
 
-  for (let element of regexArr) {
-    if (!mapObject[element]) {
-      mapObject[element] = 1;
-    } else if (mapObject[element]) {
-      mapObject[element]++;
+  const checker = ["a", "e", "i", "o", "u"];
+
+  for (let char of str.toLowerCase()) {
+    if (checker.includes(char)) {
+      count++;
     }
   }
 
-  for (let element of Object.values(mapObject)) {
-    sum += element;
-  }
-
-  return sum;
+  return count;
 }
 
-console.log(vowels("hiiiiee"));;
+// ------------------------------------------------------------------------------------------------------------------------
+// - Regular Expression
+// function vowels(str) {
+//   let vowelsRegEx = /[aeiou]/gi;
+//   let regexArr = str.match(vowelsRegEx);
+//   let mapObject = {};
+//   let sum = 0;
+
+//   for (let element of regexArr) {
+//     if (!mapObject[element]) {
+//       mapObject[element] = 1;
+//     } else if (mapObject[element]) {
+//       mapObject[element]++;
+//     }
+//   }
+
+//   for (let element of Object.values(mapObject)) {
+//     sum += element;
+//   }
+
+//   return sum;
+// }
+
+// console.log(vowels("hiiiiee"));;
 // ========================================================================================================================
 module.exports = vowels;
