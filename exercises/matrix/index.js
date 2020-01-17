@@ -23,7 +23,7 @@ function matrix(n) {
   let matrixStructure = [];
   let rowArr = [];
   let iterateCount = n * n;
-  let displayIterate = 1;
+  let displayIterate = "x";
 
   // Push element into rowArr
   for (let i = 0; i < iterateCount; i++) {
@@ -31,33 +31,61 @@ function matrix(n) {
       matrixStructure.push(rowArr);
       rowArr = [];
       rowArr.push(displayIterate);
-      displayIterate++;
+      // displayIterate++;
     } else {
       rowArr.push(displayIterate);
-      displayIterate++;
+      // displayIterate++;
     }
   }
 
   matrixStructure.push(rowArr);
   rowArr = [];
 
-  replaceMatrixElement(matrixStructure, 0, 1, "hello");
+  spiralAlgorithm(matrixStructure, n);
 
-  // Spiral Algorithm
-  // Replace going right to the end.
-  // Replace going down to the end.
-  // Replace going left to the end.
-  // Replace going up to the end.
-  // Reduce count
-
+  // ------------------------------------------------------------------------------------------------------------------------
   return matrixStructure;
 }
 
+// ========================================================================================================================
 function replaceMatrixElement(matrix, row, column, newElement) {
   matrix[row][column] = newElement;
 }
 
-console.log(matrix(4));
+// ========================================================================================================================
+// Spiral Algorithm
+
+function spiralAlgorithm(matrix, n, originRow, originColumn) {
+  let inputNumber = 1;
+
+  // Replace going right to the end.
+  for (let i = 0; i < n; i++) {
+    replaceMatrixElement(matrix, 0, i, inputNumber);
+    inputNumber++;
+  }
+
+  // Replace going down to the end.
+  for (let i = 1; i < n; i++) {
+    replaceMatrixElement(matrix, i, n - 1, inputNumber);
+    inputNumber++;
+  }
+
+  // Replace going left to the end.
+  for (let i = n - 1; i > 0; i--) {
+    replaceMatrixElement(matrix, n - 1, i - 1, inputNumber);
+    inputNumber++;
+  }
+
+  // Replace going up to the end.
+  for (let i = n - 1; i > 1; i--) {
+    replaceMatrixElement(matrix, i - 1, 0, inputNumber);
+    inputNumber++;
+  }
+}
+
+// ========================================================================================================================
+// Test
+console.log(matrix(6));
 
 // ========================================================================================================================
 module.exports = matrix;
