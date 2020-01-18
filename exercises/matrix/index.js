@@ -41,7 +41,7 @@ function matrix(n) {
   matrixStructure.push(rowArr);
   rowArr = [];
 
-  spiralAlgorithm(matrixStructure, n);
+  spiralAlgorithm(matrixStructure, n, 0, 0);
 
   // ------------------------------------------------------------------------------------------------------------------------
   return matrixStructure;
@@ -81,6 +81,74 @@ function spiralAlgorithm(matrix, n, originRow, originColumn) {
     replaceMatrixElement(matrix, i - 1, 0, inputNumber);
     inputNumber++;
   }
+
+  // ------------------------------------------------------------------------------------------------------------------------
+  // Inner Border
+  // Replace going right to the end.
+  for (let i = 0; i < n - 2; i++) {
+    replaceMatrixElement(matrix, 1, i + 1, inputNumber);
+    inputNumber++;
+  }
+
+  // Replace going down to the end.
+  for (let i = 1; i < n - 2; i++) {
+    replaceMatrixElement(matrix, i + 1, n - 2, inputNumber);
+    inputNumber++;
+  }
+
+  // Replace going left to the end.
+  for (let i = n - 2; i > 1; i--) {
+    replaceMatrixElement(matrix, n - 2, i - 1, inputNumber);
+    inputNumber++;
+  }
+
+  // Replace going up to the end.
+  for (let i = n - 1; i > 3; i--) {
+    replaceMatrixElement(matrix, i - 2, 1, inputNumber);
+    inputNumber++;
+  }
+
+  // ------------------------------------------------------------------------------------------------------------------------
+  // Final Border
+  // Replace going right to the end.
+  for (let i = 0; i < n - 2 - 2; i++) {
+    replaceMatrixElement(matrix, 1+1, i + 1 + 1, inputNumber);
+    inputNumber++;
+  }
+
+  // Replace going down to the end.
+  for (let i = 1; i < n - 2 - 2; i++) {
+    replaceMatrixElement(matrix, i + 1 + 1 , n - 2 - 1, inputNumber);
+    inputNumber++;
+  }
+
+  // Replace going left to the end.
+  for (let i = n - 2 -2; i > 1; i--) {
+    replaceMatrixElement(matrix, n - 2 -1, i, inputNumber);
+    inputNumber++;
+  }
+
+  // Replace going up to the end.
+  // for (let i = n - 1; i > 3; i--) {
+  //   replaceMatrixElement(matrix, i - 2, 1, inputNumber);
+  //   inputNumber++;
+  // }
+
+  // ------------------------------------------------------------------------------------------------------------------------
+  // Check if inputNumber has been exceeded. If not, then continue, otherwise return.
+
+  // ------------------------------------------------------------------------------------------------------------------------
+  // Spiral Recursion
+  if (n == 0) {
+    return;
+  } else {
+    n--;
+    originRow++;
+    originColumn++;
+    // spiralAlgorithm(matrix, n,  originRow, originColumn);
+  }
+
+  return matrix
 }
 
 // ========================================================================================================================
