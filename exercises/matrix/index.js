@@ -18,137 +18,91 @@
 // ========================================================================================================================
 // MY SOLUTION
 function matrix(n) {
-  // Create Matrix n x n
+  let matrix = createGrid(n);
 
+  for (let recursionCount = 0; recursionCount < n / 2; recursionCount++) {
+    let startRow = recursionCount;
+    let startColumn = recursionCount;
+
+    borderAlgorithm(matrix, startRow, startColumn);
+  }
+  return matrix;
+}
+
+function borderAlgorithm(matrix, startRow, startColumn) {
+  // Fill Right
+  let startNumber = startRow == 0 ? 1 : matrix[startRow][startColumn - 1] + 1;
+  matrix = fillRight(matrix, startRow, startColumn, startNumber);
+  // Fill Down
+  let nextNumber = matrix[startRow][matrix.length - (startColumn + 1)] + 1;
+  matrix = fillDown(matrix, startRow, startColumn, nextNumber);
+  // Fill Left
+  nextNumber =
+    matrix[matrix.length - (1 + startRow)][matrix.length - (startColumn + 1)] +
+    1;
+  matrix = fillLeft(matrix, startRow, startColumn, nextNumber);
+  // Fill Up
+  nextNumber = matrix[matrix.length - (1 + startRow)][startColumn] + 1;
+  matrix = fillUp(matrix, startRow, startColumn, nextNumber);
+}
+
+// ------------------------------------------------------------------------------------------------------------------------
+function fillRight(matrix, startRow, startColumn, newElement) {
+  for (let i = startColumn; i < matrix.length - startColumn; i++) {
+    matrix[startRow][i] = newElement;
+    newElement++;
+  }
+  return matrix;
+}
+
+function fillDown(matrix, startRow, startColumn, newElement) {
+  let maxRow = matrix.length - startRow;
+  for (let i = startRow + 1; i < maxRow; i++) {
+    // Row changes; Column stays fixed.
+    matrix[i][matrix.length - (startColumn + 1)] = newElement;
+    newElement++;
+  }
+  return matrix;
+}
+
+function fillLeft(matrix, startRow, startColumn, newElement) {
+  let humanStartColumn = startColumn + 1;
+  for (
+    let humanColumn = matrix.length - humanStartColumn;
+    humanColumn > humanStartColumn - 1;
+    humanColumn--
+  ) {
+    // Column changes; row stays the same.
+    matrix[matrix.length - (1 + startRow)][humanColumn - 1] = newElement;
+    newElement++;
+  }
+  return matrix;
+}
+
+function fillUp(matrix, startRow, startColumn, newElement) {
+  for (let i = matrix.length - (1 + startRow) - 1; i > startRow; i--) {
+    // Column stays the same; row changes.
+    matrix[i][startColumn] = newElement;
+    newElement++;
+  }
+  return matrix;
+}
+
+// ------------------------------------------------------------------------------------------------------------------------
+function createGrid(gridSize) {
   let matrixStructure = [];
-  let rowArr = [];
-  let iterateCount = n * n;
-  let displayIterate = "x";
+  let matrixRow = [];
 
-  // Push element into rowArr
-  for (let i = 0; i < iterateCount; i++) {
-    if (rowArr.length == n) {
-      matrixStructure.push(rowArr);
-      rowArr = [];
-      rowArr.push(displayIterate);
-      // displayIterate++;
-    } else {
-      rowArr.push(displayIterate);
-      // displayIterate++;
+  for (let i = 0; i < gridSize; i++) {
+    for (let j = 0; j < gridSize; j++) {
+      matrixRow.push("A");
     }
+
+    matrixStructure.push(matrixRow);
+    matrixRow = [];
   }
 
-  matrixStructure.push(rowArr);
-  rowArr = [];
-
-  spiralAlgorithm(matrixStructure, n, 0, 0);
-
-  // ------------------------------------------------------------------------------------------------------------------------
   return matrixStructure;
-}
-
-// ========================================================================================================================
-function replaceMatrixElement(matrix, row, column, newElement) {
-  matrix[row][column] = newElement;
-}
-
-// ========================================================================================================================
-// Spiral Algorithm
-
-function spiralAlgorithm(matrix, n, originRow, originColumn) {
-  let inputNumber = 1;
-
-  // Replace going right to the end.
-  for (let i = 0; i < n; i++) {
-    replaceMatrixElement(matrix, 0, i, inputNumber);
-    inputNumber++;
-  }
-
-  // Replace going down to the end.
-  for (let i = 1; i < n; i++) {
-    replaceMatrixElement(matrix, i, n - 1, inputNumber);
-    inputNumber++;
-  }
-
-  // Replace going left to the end.
-  for (let i = n - 1; i > 0; i--) {
-    replaceMatrixElement(matrix, n - 1, i - 1, inputNumber);
-    inputNumber++;
-  }
-
-  // Replace going up to the end.
-  for (let i = n - 1; i > 1; i--) {
-    replaceMatrixElement(matrix, i - 1, 0, inputNumber);
-    inputNumber++;
-  }
-
-  // ------------------------------------------------------------------------------------------------------------------------
-  // Inner Border
-  // Replace going right to the end.
-  for (let i = 0; i < n - 2; i++) {
-    replaceMatrixElement(matrix, 1, i + 1, inputNumber);
-    inputNumber++;
-  }
-
-  // Replace going down to the end.
-  for (let i = 1; i < n - 2; i++) {
-    replaceMatrixElement(matrix, i + 1, n - 2, inputNumber);
-    inputNumber++;
-  }
-
-  // Replace going left to the end.
-  for (let i = n - 2; i > 1; i--) {
-    replaceMatrixElement(matrix, n - 2, i - 1, inputNumber);
-    inputNumber++;
-  }
-
-  // Replace going up to the end.
-  for (let i = n - 1; i > 3; i--) {
-    replaceMatrixElement(matrix, i - 2, 1, inputNumber);
-    inputNumber++;
-  }
-
-  // ------------------------------------------------------------------------------------------------------------------------
-  // Final Border
-  // Replace going right to the end.
-  for (let i = 0; i < n - 2 - 2; i++) {
-    replaceMatrixElement(matrix, 1+1, i + 1 + 1, inputNumber);
-    inputNumber++;
-  }
-
-  // Replace going down to the end.
-  for (let i = 1; i < n - 2 - 2; i++) {
-    replaceMatrixElement(matrix, i + 1 + 1 , n - 2 - 1, inputNumber);
-    inputNumber++;
-  }
-
-  // Replace going left to the end.
-  for (let i = n - 2 -2; i > 1; i--) {
-    replaceMatrixElement(matrix, n - 2 -1, i, inputNumber);
-    inputNumber++;
-  }
-
-  // Replace going up to the end.
-  // for (let i = n - 1; i > 3; i--) {
-  //   replaceMatrixElement(matrix, i - 2, 1, inputNumber);
-  //   inputNumber++;
-  // }
-
-  // ------------------------------------------------------------------------------------------------------------------------
-  // Check if inputNumber has been exceeded. If not, then continue, otherwise return.
-
-  // ------------------------------------------------------------------------------------------------------------------------
-  // Spiral Recursion
-  if (n == 0) {
-    return;
-  } else {
-    n--;
-    originRow++;
-    originColumn++;
-    // spiralAlgorithm(matrix, n,  originRow, originColumn);
-  }
-
-  return matrix
 }
 
 // ========================================================================================================================
