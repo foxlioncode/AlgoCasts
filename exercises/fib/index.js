@@ -8,6 +8,29 @@
 // Example:
 //   fib(4) === 3
 
-function fib(n) {}
+// ========================================================================================================================
+// MY SOLUTION - ITERATIVE
+function fib(n) {
+  let fibNumber;
+  let fibPartA = 0;
+  let fibPartB = 1;
 
+  if (n == 0) {
+    return 0;
+  } else if (n == 1) {
+    return fibPartA + fibPartB;
+  } else {
+    for (let i = 1; i < n; i++) {
+      fibNumber = fibPartA + fibPartB;
+      fibPartA = fibPartB;
+      fibPartB = fibNumber;
+    }
+  }
+  return fibNumber;
+}
+
+// 0 1 1 2 3 5 8 13 21 34 55
+// 0 1 2 3 4 5 6 07 08 09 10
+
+// ------------------------------------------------------------------------------------------------------------------------
 module.exports = fib;
