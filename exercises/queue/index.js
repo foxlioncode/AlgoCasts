@@ -10,8 +10,23 @@
 
 // ========================================================================================================================
 // MY SOLUTION
+// - You are essentially creating a class of queue that only has two methods (unshift(), and pop()).
+// - class
+// - <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/class>
 
-class Queue {}
+class Queue {
+  constructor() {
+    this.data = [];
+  }
+
+  add(record) {
+    this.data.unshift(record);
+  }
+
+  remove() {
+    return this.data.pop();
+  }
+}
 
 // ------------------------------------------------------------------------------------------------------------------------
 module.exports = Queue;
