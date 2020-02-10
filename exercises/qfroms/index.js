@@ -14,6 +14,18 @@
 
 const Stack = require('./stack');
 
-class Queue {}
+// FIFO
+class Queue {
+    constructor(stack1, stack2){
+        this.firstStack = stack1.data
+        this.secondStack = stack2.data
+    }
+
+    add (element) {
+        
+    }
+    remove () {}
+    peek () {}
+}
 
 module.exports = Queue;
