@@ -10,6 +10,28 @@
 //   s.pop(); // returns 2
 //   s.pop(); // returns 1
 
-class Stack {}
+class Stack {
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor
+  constructor() {
+    this.data = [];
+  }
+  push(record) {
+    console.log("push");
+    // this.data.unshift(record);
+    this.data.push(record);
+  }
+  pop() {
+    console.log("pop");
+    // return this.data.shift();
+    return this.data.pop();
+  }
+  peek() {
+    console.log("peek");
+    // return this.data[0];
+    return this.data[this.data.length - 1];
+  }
+}
+
+let myStack = new Stack();
 
 module.exports = Stack;
