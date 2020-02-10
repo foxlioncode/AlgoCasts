@@ -12,20 +12,54 @@
 //     q.remove(); // returns 1
 //     q.remove(); // returns 2
 
-const Stack = require('./stack');
+const Stack = require("./stack");
 
 // FIFO
 class Queue {
-    constructor(stack1, stack2){
-        this.firstStack = stack1.data
-        this.secondStack = stack2.data
+  constructor() {
+    this.firstStack = new Stack();
+    this.secondStack = new Stack();
+  }
+
+  add(record) {
+    this.firstStack.push(record);
+  }
+
+  remove() {
+    while (this.firstStack.peek()) {
+      this.secondStack.push(this.firstStack.pop());
     }
 
-    add (element) {
-        
+    const record = this.secondStack.pop();
+
+    while (this.secondStack.peek()) {
+      this.firstStack.push(this.secondStack.pop());
     }
-    remove () {}
-    peek () {}
+
+    return record;
+  }
+
+  peek() {
+    while (this.firstStack.peek()) {
+      this.secondStack.push(this.firstStack.pop());
+    }
+
+    const record = this.secondStack.peek();
+
+    while (this.secondStack.peek()) {
+      this.firstStack.push(this.secondStack.pop());
+    }
+
+    return record;
+  }
 }
+
+let myQueue = new Queue();
+
+myQueue.add(1);
+myQueue.add(3);
+myQueue.add(4);
+
+console.log(myQueue);
 
 module.exports = Queue;
