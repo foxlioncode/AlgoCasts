@@ -44,6 +44,10 @@ class LinkedList {
       node = node.next;
     }
   }
+
+  clear() {
+    this.head = null;
+  }
 }
 
 // ========================================================================================================================
@@ -57,12 +61,12 @@ let n1 = new Node("yolo");
 const list = new LinkedList();
 
 // list.insertFirst("Friends!");
-list.insertFirst("Romans!");
-list.insertFirst("Countrymen!");
-list.insertFirst("Lend me your ears.");
+// list.insertFirst("Romans!");
+// list.insertFirst("Countrymen!");
+// list.insertFirst("Lend me your ears.");
 
-// console.log(list);
-console.log(list.getLast());
+console.log(list);
+// console.log(list.getLast());
 
 // ========================================================================================================================
 module.exports = {
