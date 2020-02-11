@@ -12,16 +12,23 @@ class LinkedList {
   constructor(head = null) {
     this.head = head;
   }
+  insertFirst(data) {
+    this.head = new Node(data, this.head);
+  }
 }
 
 // ========================================================================================================================
 let n = new Node("yolo");
-console.log(n);
+// console.log(n);
 
 let n2 = new Node("fomo", n);
-console.log(n2);
+// console.log(n2);
 
-const list = new LinkedList(n);
+// ------------------------------------------------------------------------------------------------------------------------
+const list = new LinkedList();
+
+list.insertFirst("My friends!");
+list.insertFirst("Countrymen!");
 console.log(list);
 
 // ========================================================================================================================
