@@ -53,10 +53,23 @@ class LinkedList {
     if (!this.head) {
       return;
     } else {
-      this.head = this.head.next
+      this.head = this.head.next;
     }
   }
 
+  removeLast() {
+    while (this.head) {
+      this.head = this.head.next;
+    }
+    // When linked list only has one node.
+    if (!this.head.next) {
+      this.head = null;
+      // When linked list is empty.
+    } else if (!this.head) {
+      // this.head = null;
+      return;
+    }
+  }
 }
 
 // ========================================================================================================================
@@ -75,7 +88,7 @@ list.insertFirst("Countrymen!");
 list.insertFirst("Lend me your ears.");
 
 // console.log(list);
-console.log(list.removeFirst());
+console.log(list.removeLast());
 
 // ========================================================================================================================
 module.exports = {
