@@ -28,16 +28,19 @@ class LinkedList {
   }
 
   getFirst() {
-    // let node = this.head;
-    // let firstNode;
-    // while (node) {
-    //   firstNode = node;
-    //   node = node.next;
-    // }
-    // if (node == null) {
-    //   return firstNode;
-    // }
     return this.head;
+  }
+  
+  getLast() {
+    let node = this.head;
+    let firstNode;
+    while (node) {
+      firstNode = node;
+      node = node.next;
+    }
+    if (node == null) {
+      return firstNode;
+    }
   }
 }
 
