@@ -30,7 +30,8 @@ describe('Insert First', () => {
   });
 });
 
-describe.skip('Size', () => {
+describe('Size', () => {
+// describe.skip('Size', () => {
   test('returns the number of items in the linked list', () => {
     const l = new List();
     expect(l.size()).toEqual(0);
