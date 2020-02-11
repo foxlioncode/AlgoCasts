@@ -30,16 +30,18 @@ class LinkedList {
   getFirst() {
     return this.head;
   }
-  
+
   getLast() {
-    let node = this.head;
-    let firstNode;
-    while (node) {
-      firstNode = node;
-      node = node.next;
+    if (!this.head) {
+      return null;
     }
-    if (node == null) {
-      return firstNode;
+
+    let node = this.head;
+    while (node) {
+      if (!node.next) {
+        return node;
+      }
+      node = node.next;
     }
   }
 }
@@ -60,7 +62,7 @@ list.insertFirst("Countrymen!");
 list.insertFirst("Lend me your ears.");
 
 // console.log(list);
-console.log(list.getFirst());
+console.log(list.getLast());
 
 // ========================================================================================================================
 module.exports = {
