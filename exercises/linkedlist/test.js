@@ -80,7 +80,8 @@ describe('Clear', () => {
   });
 });
 
-describe.skip('RemoveFirst', () => {
+describe('RemoveFirst', () => {
+// describe.skip('RemoveFirst', () => {
   test('removes the first node when the list has a size of one', () => {
     const l = new List();
     l.insertFirst('a');
