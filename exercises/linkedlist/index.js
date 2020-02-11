@@ -50,8 +50,8 @@ class LinkedList {
   }
 
   removeFirst() {
-    if (this.head == null) {
-      this.head = null
+    if (!this.head) {
+      return;
     } else {
       this.head = this.head.next
     }
