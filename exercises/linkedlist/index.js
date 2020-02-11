@@ -19,9 +19,10 @@ class LinkedList {
   }
   size() {
     let count = 0;
-    while (this.head.next != null) {
+    let node = this.head;
+    while (node) {
       count++;
-      this.head.next = this.head.next.next;
+      node = node.next;
     }
     return count;
   }
@@ -37,10 +38,10 @@ let n1 = new Node("yolo");
 // ------------------------------------------------------------------------------------------------------------------------
 const list = new LinkedList(n1);
 
-list.insertFirst("Friends!");
-list.insertFirst("Romans!");
-list.insertFirst("Countrymen!");
-list.insertFirst("Lend me your ears.");
+// list.insertFirst("Friends!");
+// list.insertFirst("Romans!");
+// list.insertFirst("Countrymen!");
+// list.insertFirst("Lend me your ears.");
 
 console.log(list);
 console.log(list.size());
