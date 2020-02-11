@@ -28,11 +28,12 @@ class LinkedList {
   }
 
   getFirst() {
-    while (this.head) {
-      if (this.head == null) {
-        return this.head;
+    let node = this.head
+    while (node) {
+      if (node == null) {
+        return node;
       }
-      this.head = this.head.next;
+      node = node.next;
     }
   }
 }
