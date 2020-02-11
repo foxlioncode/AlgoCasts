@@ -26,6 +26,15 @@ class LinkedList {
     }
     return count;
   }
+
+  getFirst() {
+    while (this.head) {
+      if (this.head == null) {
+        return this.head;
+      }
+      this.head = this.head.next;
+    }
+  }
 }
 
 // ========================================================================================================================
@@ -44,7 +53,7 @@ const list = new LinkedList(n1);
 // list.insertFirst("Lend me your ears.");
 
 console.log(list);
-console.log(list.size());
+console.log(list.getFirst());
 
 // ========================================================================================================================
 module.exports = {

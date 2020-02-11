@@ -43,7 +43,8 @@ describe('Size', () => {
   });
 });
 
-describe.skip('GetFirst', () => {
+describe('GetFirst', () => {
+// describe.skip('GetFirst', () => {
   test('returns the first element', () => {
     const l = new List();
     l.insertFirst(1);
