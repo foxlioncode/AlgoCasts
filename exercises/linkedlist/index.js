@@ -28,12 +28,14 @@ class LinkedList {
   }
 
   getFirst() {
-    let node = this.head
+    let node = this.head;
+    let firstNode;
     while (node) {
-      if (node == null) {
-        return node;
-      }
+      firstNode = node;
       node = node.next;
+    }
+    if (node == null) {
+      return firstNode;
     }
   }
 }
@@ -46,14 +48,14 @@ let n1 = new Node("yolo");
 // console.log(n2);
 
 // ------------------------------------------------------------------------------------------------------------------------
-const list = new LinkedList(n1);
+const list = new LinkedList();
 
 // list.insertFirst("Friends!");
-// list.insertFirst("Romans!");
-// list.insertFirst("Countrymen!");
-// list.insertFirst("Lend me your ears.");
+list.insertFirst("Romans!");
+list.insertFirst("Countrymen!");
+list.insertFirst("Lend me your ears.");
 
-console.log(list);
+// console.log(list);
 console.log(list.getFirst());
 
 // ========================================================================================================================
