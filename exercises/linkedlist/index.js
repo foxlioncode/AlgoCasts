@@ -78,19 +78,13 @@ class LinkedList {
   }
 
   insertLast(data) {
-    let node = this.head;
-    while (node) {
-      // Empty Linked List
-      if (!this.head) {
-        this.head = new Node(data);
-        return;
-      }
-      // Find the last node and make a next reference to the new node.
-      if (!node.next) {
-        node.next = new Node(data);
-        return;
-      }
-      node = node.next;
+    let lastNode = this.getLast();
+    if(lastNode){
+      // There are existing nodes in our chain.
+      lastNode.next = new Node(data)
+    } else {
+      // The chain is empty.
+      this.head = new Node(data);
     }
   }
 }
