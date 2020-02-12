@@ -76,6 +76,23 @@ class LinkedList {
     }
     previous.next = null;
   }
+
+  insertLast(data) {
+    let node = this.head;
+    while (node) {
+      // Empty Linked List
+      if (!this.head) {
+        this.head = new Node(data);
+        return;
+      }
+      // Find the last node and make a next reference to the new node.
+      if (!node.next) {
+        node.next = new Node(data);
+        return;
+      }
+      node = node.next;
+    }
+  }
 }
 
 // ========================================================================================================================
