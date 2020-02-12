@@ -58,17 +58,23 @@ class LinkedList {
   }
 
   removeLast() {
-    while (this.head) {
-      this.head = this.head.next;
+    // When linked list is empty.
+    if (!this.head) {
+      return;
     }
     // When linked list only has one node.
     if (!this.head.next) {
       this.head = null;
-      // When linked list is empty.
-    } else if (!this.head) {
-      // this.head = null;
       return;
     }
+
+    let previous = this.head;
+    let node = this.head.next;
+    while (node.next) {
+      previous = node;
+      node = node.next;
+    }
+    previous.next = null;
   }
 }
 
